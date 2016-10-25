@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> subjects;
     ArrayAdapter<String> arrayAdapter;
     final String CUSTOM_TAB_PACKAGE_NAME = "com.android.chrome";
-    String link = "https://en.wikipedia.org/wiki/";
+    String linkHead = "https://www.tutorialspoint.com/";
+    String linkTail = "/index.htm";
     String[] links;
     CustomTabsClient mCustomTabsClient;
     CustomTabsSession mCustomTabsSession;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         subjects.add("C");
         subjects.add("C++");
         subjects.add("Java");
+        subjects.add("Android");
         subjects.add("Python");
         subjects.add("HTML");
         subjects.add("CSS");
@@ -50,15 +52,16 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(arrayAdapter);
 
         links = new String[]{
-                "C_(programming_language)",
-                "C%2B%2B",
-                "Java_(programming_language)",
-                "Python_(programming_language)",
-                "HTML",
-                "Cascading_Style_Sheets",
-                "PHP",
-                "JavaScript",
-                "AngularJS"
+                "cprogramming",
+                "cplusplus",
+                "java",
+                "android",
+                "python",
+                "html",
+                "css",
+                "php",
+                "javascript",
+                "angularjs"
         };
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -87,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                         .setStartAnimations(context, android.R.anim.slide_out_right, android.R.anim.slide_in_left)
                         .setExitAnimations(context, android.R.anim.slide_in_left, android.R.anim.slide_out_right)
                         .build();
-                mCustomTabsIntent.launchUrl(context, Uri.parse(link + links[position]));
+                mCustomTabsIntent.launchUrl(context, Uri.parse(linkHead + links[position] + linkTail));
             }
         });
 
